@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Main from './components/Main'
 import {randColor} from './simple_scripts/randcolor'
 
 
@@ -6,8 +7,7 @@ function App() {
   randColor();
   return (
     <div className="App">
-      <Header />
-      ;lkj;lkj;lkj
+      <Main />
     </div>
   );
 }
