@@ -4,7 +4,7 @@ import {randColor} from './simple_scripts/randcolor'
 
 
 function App() {
-  randColor();
+  randColor(); //Sets background to random color
   return (
     <div className="App">
       <Header />
