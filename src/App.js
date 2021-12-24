@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Main from './components/Main'
 import {randColor} from './simple_scripts/randcolor'
+import ScanMenu from './components/ScanMenu'
 
 
 function App() {
