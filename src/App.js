@@ -7,6 +7,7 @@ function App() {
   randColor();
   return (
     <div className="App">
+      <Header />
       <Main />
     </div>
   );
