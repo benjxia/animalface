@@ -1,12 +1,9 @@
 import React from 'react'
+import blob from '../assets/blob.png'
 
 const header = (i) => {
     return (
-        <header>
-            <h1>
-                header test {i.title}
-            </h1>
-        </header>
+        <img src={blob} alt = 'blob' className= 'blob'></img>
     )
 }
 

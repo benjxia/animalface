@@ -1,12 +1,14 @@
 import Header from './components/Header'
 import Main from './components/Main'
 import {randColor} from './simple_scripts/randcolor'
+import ScanMenu from './components/ScanMenu'
 
 
 function App() {
-  randColor();
+  randColor(); //Sets background to random color
   return (
     <div className="App">
+      <Header />
       <Main />
     </div>
   );
