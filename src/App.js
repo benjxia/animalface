@@ -5,11 +5,12 @@ import ScanMenu from './components/ScanMenu'
 
 
 function App() {
-  randColor(); //Sets background to random color
+  var c = randColor(); //Sets background and menu to random color
+  document.getElementById("main").style.backgroundColor = c;
   return (
     <div className="App">
       <Header />
-      <Main />
+      <Main color = {c}/>
     </div>
   );
 }
