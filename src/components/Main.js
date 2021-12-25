@@ -1,6 +1,6 @@
 import React from 'react'
 import ScanMenu from './scanmenu/ScanMenu'
-import ScanButton from './main/ScanButton'
+import ScanButton from './home/ScanButton'
 
 class Main extends React.Component {
     constructor(props){
