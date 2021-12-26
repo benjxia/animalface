@@ -57,22 +57,22 @@ code {
   border-width:2px;
   border-color:black;
   border-radius: 10px;
-  padding: 5px;
+  padding: 2px;
 
-  font-size: 30px;
+  color: white;
+  font-size: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif, Geneva, Verdana, sans-serif;
-  -webkit-text-stroke-width:0;
+  -webkit-text-stroke-width:1;
 }
 
 .ScanButton:hover{
   cursor:pointer;
-  background-color:gray;
-  color: white;
+  color: black;
 }
 
 .ScanMenu {
-  height: 600px;
-  width: 50%;
+  height: 70%;
+  width: 60%;
   line-height:100px;
   position:absolute;
   top: 0;

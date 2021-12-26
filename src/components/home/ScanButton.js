@@ -9,14 +9,12 @@ class ScanButton extends React.Component {
     }
 
     handleClick(){ //unused at the moment
-        this.setState(prevState => ({
-            active: !prevState.active
-        }));
+        this.props.modeswitch(1);
     }
 
     render(){
         return(
-            <button className= 'ScanButton' onClick = {this.props.main}>
+            <button className= 'ScanButton' onClick = {this.handleClick} style = {{backgroundColor: this.props.color}}>
                 {/*
                 Props.main is the function in Main.js that sets the main component inactive and makes it
                 not render anything.
