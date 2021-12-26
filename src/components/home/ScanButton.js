@@ -8,8 +8,8 @@ class ScanButton extends React.Component {
         this.handleClick = this.handleClick.bind(this); //unused at the moment
     }
 
-    handleClick(){ //unused at the moment
-        this.props.modeswitch(1);
+    handleClick = () => { //unused at the moment
+        this.props.modeswitch();
     }
 
     render(){

@@ -13,8 +13,14 @@ class App extends React.Component {
     document.getElementById("main").style.backgroundColor = this.c;
   }
 
-  setMode(i){
-    this.setState((i) => {
+  setMode0 = () =>{
+    this.setState(() => {
+      return {mode: 0};
+    });
+  }
+
+  setMode1 = () =>{
+    this.setState(() => {
       return {mode: 1};
     });
   }
@@ -24,12 +30,14 @@ class App extends React.Component {
       case 0:
         return ( //meat of the page
           <div className="App">
-            <Home color = {this.c} modeswitch = {this.setMode.bind(this)}/>
+            <Home color = {this.c} modeswitch = {this.setMode1.bind(this)}/>
           </div>
         );
       case 1:
         return (
-          <ScanMenu color = {this.c} main = {this.setMode.bind(this)}/>
+          <div className = "App">
+            <ScanMenu color = {this.c} modeswitch = {this.setMode0.bind(this)}/> 
+          </div>
         );
 
       default:
