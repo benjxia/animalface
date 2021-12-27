@@ -14,7 +14,7 @@ class ScanButton extends React.Component {
 
     render(){
         return(
-            <button className= 'ScanButton' onClick = {this.handleClick} style = {{backgroundColor: this.props.color}}>
+            <button className= 'ModeButton' onClick = {this.handleClick} style = {{backgroundColor: this.props.color}}>
                 {/*
                 Props.main is the function in Main.js that sets the main component inactive and makes it
                 not render anything.

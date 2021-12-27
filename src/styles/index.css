@@ -42,7 +42,7 @@ code {
 
 }
 
-.ScanButton {
+.ModeButton {
   display:inline-block;
   margin: 0 auto;
   width: 100pt;
@@ -65,14 +65,14 @@ code {
   -webkit-text-stroke-width:1;
 }
 
-.ScanButton:hover{
+.ModeButton:hover{
   cursor:pointer;
   color: black;
 }
 
 .ScanMenu {
-  height: 70%;
-  width: 60%;
+  height: 50%;
+  width: 25%;
   line-height:100px;
   position:absolute;
   top: 0;
@@ -91,12 +91,12 @@ code {
   display:table;
   text-align: center;
   vertical-align: middle;
-
 }
 
-.UploadMenu {
+.CamUploadMenu {
+  cursor: pointer;
   width: 100%;
-  height: 100%;
+  height: 45%;
 
   display:table-cell;
   vertical-align:middle;
@@ -105,5 +105,37 @@ code {
   border-color: black;
   border-width:2px;
   border-radius:2%;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Geneva, Verdana, sans-serif;
   
+}
+
+.CamUploadMenu:hover{
+  color: white;
+}
+
+.CamUploadMenu img{
+  height: 50px;
+  width: 50px;
+}
+.CamUploadMenu:hover > img{
+  filter:invert();
+  
+}
+
+.ScanBackButton{
+  width: 100%;
+  height:10%;
+  display:table;
+
+  border-radius:5px;
+  border-color:black;
+  border-style:solid;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Geneva, Verdana, sans-serif;
+}
+
+.ScanBackButton:hover{
+  cursor:pointer;
+  color: white;
 }

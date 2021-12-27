@@ -16,12 +16,8 @@ class Home extends React.Component {
        // if(this.state.active){ //Home screen
             return (
         <div className = 'Whichanimal'>
-            Which Animal Do You Look Like? <br></br>
+            Which Animal Do You Look Like? <br />
             <ScanButton text = 'Scan' color = {this.props.color} modeswitch = {this.props.modeswitch}/> 
-            {/* 
-            this.setInactive here allows the child component (The 'Scan button)
-            to set the entire main componenent as inactive
-            */}
         </div>
             );
     }

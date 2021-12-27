@@ -1,5 +1,6 @@
 //import Header from './components/Header'
 import React from 'react';
+import axios from 'axios'
 import Home from './components/Home'
 import ScanMenu from './components/scanmenu/ScanMenu'
 import {randColor} from './simple_scripts/randcolor'
@@ -13,13 +14,13 @@ class App extends React.Component {
     document.getElementById("main").style.backgroundColor = this.c;
   }
 
-  setMode0 = () =>{
+  setMode0 = () =>{ //change to home page
     this.setState(() => {
       return {mode: 0};
     });
   }
 
-  setMode1 = () =>{
+  setMode1 = () =>{ //change to scan menu
     this.setState(() => {
       return {mode: 1};
     });
@@ -28,13 +29,13 @@ class App extends React.Component {
   render(){
     switch(this.state.mode){
       case 0:
-        return ( //meat of the page
+        return ( //Home page
           <div className="App">
             <Home color = {this.c} modeswitch = {this.setMode1.bind(this)}/>
           </div>
         );
       case 1:
-        return (
+        return ( //Scan Menu
           <div className = "App">
             <ScanMenu color = {this.c} modeswitch = {this.setMode0.bind(this)}/> 
           </div>

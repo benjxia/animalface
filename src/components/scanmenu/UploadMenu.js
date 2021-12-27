@@ -1,4 +1,5 @@
 import React from 'react'
+import upload from '../../assets/upload.png'
 
 class UploadMenu extends React.Component{
     constructor(props){
@@ -7,9 +8,10 @@ class UploadMenu extends React.Component{
 
     render(){
         return(
-            <div className = "UploadMenu" style = {{backgroundColor: this.props.color}}>
-                asdfadf
-            </div>
+            <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}}>
+                <img src = {upload} alt = ""></img> <br />
+                Upload Image
+            </button>
         );
     }
 }
