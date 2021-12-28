@@ -1,20 +1,17 @@
 import React from 'react'
 
-class ScanButton extends React.Component {
+class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {active: true};
-
-        this.handleClick = this.handleClick.bind(this); //unused at the moment
-    }
-
-    handleClick = () => { //unused at the moment
-        this.props.modeswitch();
     }
 
     render(){
-        return(
-            <button className= 'ModeButton' onClick = {this.handleClick} style = {{backgroundColor: this.props.color}}>
+       // if(this.state.active){ //Home screen
+            return (
+        <div className = 'Whichanimal'>
+            Which Animal Do You Look Like? <br />
+            <button className= 'ModeButton' onClick = {this.props.modeswitch} style = {{backgroundColor: this.props.color}}>
                 {/*
                 Props.main is the function in Main.js that sets the main component inactive and makes it
                 not render anything.
@@ -22,10 +19,11 @@ class ScanButton extends React.Component {
 
                 Scan
             </button>
+        </div>
             );
     }
 }
+    
 
 
-
-export default ScanButton
+export default Home

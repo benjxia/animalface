@@ -1,6 +1,6 @@
 import React from 'react'
-import UploadMenu from './UploadMenu'
-import CamMenu from './CamMenu'
+import PicMenu from './PicMenu'
+import './scanmenu.css'
 
 class ScanMenu extends React.Component {
     constructor(props){
@@ -26,9 +26,7 @@ class ScanMenu extends React.Component {
                 //Main scan menu that lets users choose between camera input or file upload. 
                 return (
                     <div className = 'ScanMenu' id = 'scanmenu' style = {{backgroundColor: this.props.color}}>
-                        <UploadMenu color = {this.props.color} scanmodeswitch = {this.setScanMode0.bind(this)}/>
-                        <CamMenu color = {this.props.color} scanmodeswitch = {this.setScanMode0.bind(this)}/>
-                        <button className = "ScanBackButton" style = {{backgroundColor: this.props.color}} onClick = {this.props.modeswitch}>Back</button>
+                        <PicMenu color = {this.props.color} modeswitch = {this.props.modeswitch} />
                     </div>
                 );
             default:
