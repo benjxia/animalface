@@ -58,10 +58,13 @@ class ScanMenu extends React.Component {
                                 <img src = {upload} alt = ""></img> <br />
                                 Upload Image
                             </button>
-                            <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}}>
+                            {/*
+                             <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}}>
                                 <img src = {cam} alt = ""></img> <br />
                                 Use Camera
                             </button>
+                            */}
+
                             <button className = "ScanBackButton" style = {{backgroundColor: this.props.color}} onClick = {this.props.modeswitch}>Back</button>
                         </div>
                     </div>
