@@ -42,8 +42,8 @@ class ScanMenu extends React.Component {
 
     uploadImgHandler = () =>{
         document.getElementById("uploadfile").click();
-        this.fileUploadHandler();
-        this.setScanMode1(); 
+        //this.fileUploadHandler();
+        //this.setScanMode1(); 
     }
 
     render(){
