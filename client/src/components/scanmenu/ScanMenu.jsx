@@ -1,6 +1,5 @@
 import React from 'react'
 import './scanmenu.css'
-import cam from '../../assets/cam.png'
 import upload from '../../assets/upload.png'
 import axios from 'axios'
 
@@ -9,12 +8,16 @@ class ScanMenu extends React.Component {
         super(props);
         this.state = {
             scanmode: 0,
-            imginput: null,
-            fileUploadState:"",
-            customers: []
+            selectedFile: null,
         };
+        this.imgChangeHandler.bind(this);
+        this.uploadSubmitHandler.bind(this);
     }
-
+    /*
+    Scan mode 0: Default, Upload menu still up
+    Scan mode 1: Transition
+    Scan mode 2: Results...
+    */
     setScanMode0(){
         this.setState(() => {
           return {scanmode: 0
@@ -27,28 +30,26 @@ class ScanMenu extends React.Component {
         }});
     }
 
-    fileSelectedHandler = event => {
-        this.setState({
-            imginput: event.target.files[0]
-        })
-    }
-    fileUploadHandler = () =>{
-        console.log("send help");
-        /*
-        const fd = new FormData();
-        fd.append('image',this.state.imginput,this.state.imginput.name);
-        axios.post('some url thing', fd.then(res => {console.log(res);}));
-        */
-    }
-
-    uploadImgHandler = () =>{
+    uploadClickHandler = () =>{  // "Proxy" for actual image input
         document.getElementById("uploadfile").click();
-        //this.fileUploadHandler();
-        //this.setScanMode1(); 
     }
 
-    componentDidMount() {
-        fetch("/api/customers").then(res =>res.json()).then(customers => this.setState({customers}, ()=>console.log('customers fetched:', customers)));
+    imgChangeHandler = event => {
+        this.setState({ selectedFile: event.target.files[0] })
+    } 
+
+    uploadSubmitHandler = (event) =>{
+        event.preventDefault();
+
+        const data = new FormData();
+        data.append('file', this.state.selectedFile);
+        axios.post("/upload")
+        .then((response) => {
+            alert("The file is successfully uploaded");
+        }).catch((error) => {
+    });
+        this.setScanMode1();
+        console.log(this.state.selectedFile.name)
     }
 
     render(){
@@ -57,29 +58,24 @@ class ScanMenu extends React.Component {
                 //Main scan menu that lets users choose between camera input or file upload. 
                 return (
                     <div className = 'ScanMenu' id = 'scanmenu' style = {{backgroundColor: this.props.color}}>
-                        <ul>{this.state.customers.map(customer => <li key = {customer.id}>{customer.name}</li>)}</ul>
-                        <div className = "CamUploadContainer">
-                            <input id = "uploadfile" type = "file" accept = "image/*" onChange = {this.fileSelectedHandler} hidden/>
-                            <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}} onClick = {this.uploadImgHandler.bind(this)}>
-                                <img src = {upload} alt = ""></img> <br />
-                                Upload Image
-                            </button>
-                            {/*
-                             <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}}>
-                                <img src = {cam} alt = ""></img> <br />
-                                Use Camera
-                            </button>
-                            */}
-
-                            <button className = "ScanBackButton" style = {{backgroundColor: this.props.color}} onClick = {this.props.modeswitch}>Back</button>
-                        </div>
+                        <form className = "CamUploadContainer" onSubmit = {this.uploadSubmitHandler}>
+                                <input id = "uploadfile" type = "file" accept = "image/*" onChange = {this.imgChangeHandler} hidden />
+                                <button type = "button" className = "CamUploadMenu" style = {{backgroundColor: this.props.color}} onClick = {this.uploadClickHandler}>
+                                    <img src = {upload} alt = ""></img> <br />
+                                    Upload Image <br/>
+                                    {this.state.selectedFile==null? "" : this.state.selectedFile.name}
+                                </button>
+                                <button type="submit" className = "ScanBackButton" style = {{backgroundColor: this.props.color}}>
+                                    Submit
+                                </button>
+                                <button className = "ScanBackButton" style = {{backgroundColor: this.props.color}} onClick = {this.props.modeswitch}>Back</button>
+                        </form>
                     </div>
                 );
             case 1:
                 return(
                     <div className = 'ScanMenu' id = 'scanmenu' style = {{backgroundColor: this.props.color}}>
-
-
+                        Insert some processing animation idk
                     </div>
                 );
             default:

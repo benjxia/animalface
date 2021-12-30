@@ -1,15 +1,35 @@
+
 const express = require("express");
+const path = require("path");
+const multer = require("multer");
 
 const app = express();
 
-app.get('/api/customers', (req, res) => {
-    const customers = [
-        {id: 1, name: 'a'},
-        {id: 2, name: 'b'}
-    ];
-    res.json(customers);
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public')
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' +file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage }).single('file')
+
+app.post('/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      res.sendSt4atus(500);
+    }
+    res.send(req.file);
+  });
+  console.log(res);
 });
 
-const port = 5000;
 
-app.listen(port, ()=> console.log(`server online port: ${port}`));
+
+app.use(express.static('public'));
+  
+const PORT = process.env.PORT || 8080;
+  
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
