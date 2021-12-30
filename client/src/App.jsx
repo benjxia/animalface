@@ -1,6 +1,5 @@
 //import Header from './components/Header'
 import React from 'react';
-import axios from 'axios'
 import Home from './components/home/Home'
 import ScanMenu from './components/scanmenu/ScanMenu'
 import {randColor} from './simple_scripts/randcolor'

@@ -10,7 +10,8 @@ class ScanMenu extends React.Component {
         this.state = {
             scanmode: 0,
             imginput: null,
-            fileUploadState:""
+            fileUploadState:"",
+            customers: []
         };
     }
 
@@ -46,12 +47,17 @@ class ScanMenu extends React.Component {
         //this.setScanMode1(); 
     }
 
+    componentDidMount() {
+        fetch("/api/customers").then(res =>res.json()).then(customers => this.setState({customers}, ()=>console.log('customers fetched:', customers)));
+    }
+
     render(){
         switch(this.state.scanmode){
             case 0:
                 //Main scan menu that lets users choose between camera input or file upload. 
                 return (
                     <div className = 'ScanMenu' id = 'scanmenu' style = {{backgroundColor: this.props.color}}>
+                        <ul>{this.state.customers.map(customer => <li key = {customer.id}>{customer.name}</li>)}</ul>
                         <div className = "CamUploadContainer">
                             <input id = "uploadfile" type = "file" accept = "image/*" onChange = {this.fileSelectedHandler} hidden/>
                             <button className = "CamUploadMenu" style = {{backgroundColor: this.props.color}} onClick = {this.uploadImgHandler.bind(this)}>
