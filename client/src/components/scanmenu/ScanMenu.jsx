@@ -9,6 +9,7 @@ class ScanMenu extends React.Component {
         this.state = {
             scanmode: 0,
             selectedFile: null,
+            server_output: "moo",
         };
         this.imgChangeHandler.bind(this);
         this.uploadSubmitHandler.bind(this);
@@ -35,7 +36,7 @@ class ScanMenu extends React.Component {
     }
 
     imgChangeHandler = event => {
-        this.setState({ selectedFile: event.target.files[0] })
+        this.setState({ selectedFile: event.target.files[0] });
     } 
 
     uploadSubmitHandler = (event) =>{
@@ -43,13 +44,15 @@ class ScanMenu extends React.Component {
 
         const data = new FormData();
         data.append('file', this.state.selectedFile);
-        axios.post("/upload")
-        .then((response) => {
-            alert("The file is successfully uploaded");
-        }).catch((error) => {
-    });
+        axios.post('/upload', data)
+        .then(res => {
+            this.setState({ server_output: res.data });
+            console.log(this.state.server_output);
+            console.log("blah");
+            console.log(this.state.server_output[2]);
+        });
+       // console.log(this.state.server_output[0]);
         this.setScanMode1();
-        console.log(this.state.selectedFile.name)
     }
 
     render(){
@@ -76,6 +79,7 @@ class ScanMenu extends React.Component {
                 return(
                     <div className = 'ScanMenu' id = 'scanmenu' style = {{backgroundColor: this.props.color}}>
                         Insert some processing animation idk
+                        <img style= {{maxWidth:500,maxHeight:500}} src={`http://localhost:3000/${this.state.server_output[0].filename}`} alt= "it didnt work :(" /> 
                     </div>
                 );
             default:

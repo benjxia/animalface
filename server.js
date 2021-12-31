@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
+require('dotenv').config();
 
 const app = express();
 
@@ -17,18 +18,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('file')
 
 app.post('/upload', (req, res) => {
+  
   upload(req, res, (err) => {
     if (err) {
-      res.sendSt4atus(500);
+      res.sendStatus(500);
     }
-    res.send(req.file);
+    res.send([req.file,req.file,"some string"]);
   });
-  console.log(res);
+  
+ // console.log(file.originalname);
 });
 
 
 
 app.use(express.static('public'));
+
+
   
 const PORT = process.env.PORT || 8080;
   
