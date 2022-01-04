@@ -1,3 +1,5 @@
+The file structure for this project is a bit of a mess right now since it was originally just a react app and now it has an existing "backend"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
